@@ -1,0 +1,30 @@
+<script>
+function showGuests() {
+  document.getElementById('guestBox').style.display = 'block';
+}
+
+function sendYes() {
+  let guests = document.getElementById('guests').value || 1;
+  submitForm('Yes', guests);
+}
+
+function submitForm(attend, guests) {
+  fetch("https://formspree.io/f/YOUR_ID", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: document.getElementById('name').value,
+      attending: attend,
+      guests: guests
+    })
+  }).then(() => {
+    if(attend === "Yes"){
+      alert("See you there ✨");
+    } else {
+      alert("Thanks for the response");
+    }
+  });
+}
+</script>
