@@ -1,42 +1,134 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Test</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sahithya Sauhrdha Vedhi 2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  background:#f8f7f4;
+  font-family:'Inter', sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.card {
+  background:white;
+  padding:30px;
+  border-radius:12px;
+  max-width:420px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+h1 {
+  font-family:'Playfair Display', serif;
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+p {
+  color:#444;
+  line-height:1.6;
+}
+
+a {
+  color:black;
+}
+
+input {
+  width:90%;
+  padding:10px;
+  margin-top:10px;
+  border:1px solid #ccc;
+  border-radius:6px;
+}
+
+button {
+  margin:10px;
+  padding:10px 20px;
+  border:none;
+  border-radius:6px;
+  background:black;
+  color:white;
+  cursor:pointer;
+}
+
+.secondary {
+  background:white;
+  color:black;
+  border:1px solid black;
+}
+
+#guestBox {
+  display:none;
+}
+</style>
 </head>
+
 <body>
-  <h1>It works now 🎉</h1>
-</body>
-</html>
-=======
+
+<div class="card">
+<h1>Sahithya Sauhrdha Vedhi Annual Celebration 2026</h1>
+<p><i>You are cordially invited</i></p>
+
+<p>
+📅 10 May 2026<br>
+⏰ 1 PM onwards<br><br>
+
+📍 NVKSD College of Education<br>
+<a href="https://maps.app.goo.gl/zPnazebMGaqRA48c8" target="_blank">View Location</a>
+</p>
+
+<input type="text" id="name" placeholder="Your name (optional)">
+
+<h3>Will you attend?</h3>
+
+<button onclick="showGuests()">Yes</button>
+<button class="secondary" onclick="submitForm('No',0)">No</button>
+
+<div id="guestBox">
+<p>How many people will attend?</p>
+<input type="number" id="guests" min="1">
+<br>
+<button onclick="sendYes()">Submit</button>
+</div>
+
+</div>
+
 <script>
-function showGuests() {
-  document.getElementById('guestBox').style.display = 'block';
+function showGuests(){
+  document.getElementById("guestBox").style.display="block";
 }
 
-function sendYes() {
-  let guests = document.getElementById('guests').value || 1;
-  submitForm('Yes', guests);
+function sendYes(){
+  let g=document.getElementById("guests").value||1;
+  submitForm("Yes",g);
 }
 
-function submitForm(attend, guests) {
-  fetch("https://formspree.io/f/mrejgbnn", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      name: document.getElementById('name').value,
-      attending: attend,
-      guests: guests
+function submitForm(a,g){
+  fetch("https://formspree.io/f/YOUR_ID",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      name:document.getElementById("name").value,
+      attending:a,
+      guests:g
     })
-  }).then(() => {
-    if(attend === "Yes"){
+  }).then(()=>{
+    if(a==="Yes"){
       alert("See you there ✨");
-    } else {
+    }else{
       alert("Thanks for the response");
     }
   });
 }
 </script>
->>>>>>> fe32aded2d2682b975dad937e6cafed87d3c16c0
+
+</body>
+</html>
